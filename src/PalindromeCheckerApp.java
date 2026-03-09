@@ -158,21 +158,58 @@ public class PalindromeCheckerApp {
 
         System.out.println("Input : " + input10);
         System.out.println("Is Palindrome? : " + isPalindrome10);
-        class PalindromeService {
 
-            public boolean checkPalindrome(String input) {
-                int start = 0;
-                int end = input.length() - 1;
+        PalindromeService service = new PalindromeService();
+        String input11 = "racecar";
+        boolean isPalindrome11 = service.checkPalindrome(input11);
 
-                while (start < end) {
-                    if (input.charAt(start) != input.charAt(end)) {
-                        return false;
-                    }
-                    start++;
-                    end--;
-                }
-                return true;
+        System.out.println("Input : " + input11);
+        System.out.println("Is Palindrome? : " + isPalindrome11);
+
+        PalindromeStrategy strategy = new StackStrategy();
+        String input12 = "level";
+        boolean isPalindrome12 = strategy.check(input12);
+
+        System.out.println("Input : " + input12);
+        System.out.println("Is Palindrome? : " + isPalindrome12);
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
+
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+class StackStrategy implements PalindromeStrategy {
+
+    public boolean check(String input) {
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
             }
         }
+        return true;
     }
 }
