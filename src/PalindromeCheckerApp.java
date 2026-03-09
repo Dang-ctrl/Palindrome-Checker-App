@@ -14,12 +14,10 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // UC1: Welcome Message
         System.out.println("Welcome to the Palindrome Checker Management System");
         System.out.println("Version : 1.0");
         System.out.println("System initialized successfully.");
 
-        // UC2: Hardcoded Palindrome Check (character comparison)
         String input = "madam";
         boolean isPalindrome = true;
 
@@ -33,7 +31,6 @@ public class PalindromeCheckerApp {
         System.out.println("Input text: " + input);
         System.out.println("Is it a Palindrome? : " + isPalindrome);
 
-        // UC3: Palindrome Check Using String Reverse
         String reversed = "";
 
         for (int i = input.length() - 1; i >= 0; i--) {
@@ -44,7 +41,6 @@ public class PalindromeCheckerApp {
         System.out.println("Reversed text: " + reversed);
         System.out.println("Is it a Palindrome (Reverse Check)? : " + isPalindromeReverse);
 
-        // UC4: Character Array Based Palindrome Check (Two-Pointer)
         String input4 = "radar";
         char[] chars = input4.toCharArray();
 
@@ -64,7 +60,6 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input4);
         System.out.println("Is Palindrome? : " + isPalindrome4);
 
-        // UC5: Stack-Based Palindrome Check
         String input5 = "noon";
         Stack<Character> stack5 = new Stack<>();
 
@@ -84,7 +79,6 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input5);
         System.out.println("Is Palindrome? : " + isPalindrome5);
 
-        // UC6: Queue + Stack Based Palindrome Check
         String input6 = "civic";
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack6 = new Stack<>();
@@ -106,7 +100,6 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input6);
         System.out.println("Is Palindrome? : " + isPalindrome6);
 
-        // UC7: Deque-Based Optimized Palindrome Check
         String input7 = "refer";
         Deque<Character> deque = new ArrayDeque<>();
 
@@ -126,7 +119,6 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input7);
         System.out.println("Is Palindrome? : " + isPalindrome7);
 
-        // UC8: Linked List Based Palindrome Check
         String input8 = "level";
         LinkedList<Character> list = new LinkedList<>();
 
@@ -146,11 +138,25 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input8);
         System.out.println("Is Palindrome? : " + isPalindrome8);
 
-        // UC9: Recursive Palindrome Check
         String input9 = "madam";
         boolean isPalindrome9 = checkPalindrome(input9, 0, input9.length() - 1);
 
         System.out.println("Input : " + input9);
         System.out.println("Is Palindrome? : " + isPalindrome9);
+
+        String input10 = "A man a plan a canal Panama";
+        String normalized = input10.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isPalindrome10 = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome10 = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input10);
+        System.out.println("Is Palindrome? : " + isPalindrome10);
     }
 }
