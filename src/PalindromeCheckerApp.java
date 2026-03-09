@@ -123,6 +123,24 @@ public class PalindromeCheckerApp {
 
         System.out.println("Input : " + input6);
         System.out.println("Is Palindrome? : " + isPalindrome6);
-    }
+        // UC7: Deque-Based Optimized Palindrome Check
+        String input7 = "refer";
+        Deque<Character> deque = new ArrayDeque<>();
 
+        for (char c : input7.toCharArray()) {
+            deque.add(c);
+        }
+
+        boolean isPalindrome7 = true;
+
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
+                isPalindrome7 = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input7);
+        System.out.println("Is Palindrome? : " + isPalindrome7);
+    }
 }
